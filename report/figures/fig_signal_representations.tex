@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.93\textwidth, height=1.9cm,
+    xmin=0, xmax=1, ymin=-0.55, ymax=0.55,
+    axis lines=left, xlabel={$t$}, ylabel={$x[n]$},
+    xtick=\empty, ytick=\empty, title={Tín hiệu thô},
+    title style={font=\small}, label style={font=\scriptsize},
+]
+\addplot[semgblue, line width=0.7pt, domain=0:1, samples=450]
+    {0.24*sin(deg(2*pi*4*x))+0.12*sin(deg(2*pi*17*x))
+     +0.06*sin(deg(2*pi*31*x))};
+\end{axis}
+\begin{axis}[
+    at={(0,-2.05cm)}, anchor=north west,
+    width=0.93\textwidth, height=1.9cm,
+    xmin=0, xmax=1, ymin=0, ymax=0.55,
+    axis lines=left, xlabel={$t$}, ylabel={$|x[n]|$},
+    xtick=\empty, ytick=\empty, title={Tín hiệu chỉnh lưu},
+    title style={font=\small}, label style={font=\scriptsize},
+]
+\addplot[semgorange, line width=0.7pt, domain=0:1, samples=450]
+    {abs(0.24*sin(deg(2*pi*4*x))+0.12*sin(deg(2*pi*17*x))
+     +0.06*sin(deg(2*pi*31*x)))};
+\end{axis}
+\begin{axis}[
+    at={(0,-4.10cm)}, anchor=north west,
+    width=0.93\textwidth, height=1.9cm,
+    xmin=0, xmax=1, ymin=0, ymax=0.42,
+    axis lines=left, xlabel={$t$}, ylabel={bao},
+    xtick=\empty, ytick=\empty, title={Bao biên độ sau lọc thông thấp},
+    title style={font=\small}, label style={font=\scriptsize},
+]
+\addplot[semgred, line width=1.1pt, domain=0:1, samples=250]
+    {0.16+0.10*(0.5+0.5*sin(deg(2*pi*1.2*x-40)))};
+\end{axis}
+\end{tikzpicture}

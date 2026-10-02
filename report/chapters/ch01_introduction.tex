@@ -1,0 +1,20 @@
+\chapter{Giới thiệu}
+\label{ch:intro}
+
+Tín hiệu điện cơ bề mặt (surface Electromyography -- sEMG) là phương pháp ghi lại hoạt động điện sinh học của cơ thông qua các điện cực đặt trên da. Báo cáo này trình bày quá trình phát triển firmware cho hệ thống thu nhận tín hiệu sEMG, bao gồm kiến trúc phần mềm, các module chức năng và kết quả kiểm thử.
+
+\section{Mục tiêu}
+\begin{itemize}
+    \item Thiết kế firmware thu nhận tín hiệu ADC đa kênh đồng bộ.
+    \item Triển khai bộ lọc số thời gian thực trên vi điều khiển.
+    \item Đảm bảo truyền dữ liệu ổn định qua giao tiếp USB/BLE.
+    \item Tối ưu mức tiêu thụ năng lượng cho thiết bị đeo.
+\end{itemize}
+
+\section{Phạm vi}
+Báo cáo tập trung vào lớp firmware (bare-metal / HAL), không bao gồm thiết kế phần cứng hoặc ứng dụng phía host.
+
+\section{Bố cục báo cáo}
+Chương~\ref{ch:architecture} trình bày kiến trúc tổng thể của hệ thống firmware. Chương~\ref{ch:modules} đi sâu vào thiết kế chi tiết từng module. Chương~\ref{ch:results} tổng hợp kết quả kiểm thử và đánh giá hiệu năng. Cuối cùng, Chương~\ref{ch:conclusion} rút ra kết luận và đề xuất hướng phát triển.
+
+</content>

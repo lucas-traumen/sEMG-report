@@ -1,0 +1,62 @@
+\chapter{Thiết kế module}
+\label{ch:modules}
+
+Chương này trình bày chi tiết thiết kế và triển khai từng module firmware, bao gồm thu nhận tín hiệu qua ADC/DMA, xử lý tín hiệu số và truyền dữ liệu lên host.
+
+\section{Thu nhận ADC qua DMA}
+
+Tín hiệu sEMG được lấy mẫu ở tần số $f_s = \SI{1000}{Hz}$ mỗi kênh. DMA (Direct Memory Access) được cấu hình ở chế độ circular để liên tục điền dữ liệu vào bộ đệm kép (double buffering), giúp CPU không phải can thiệp vào quá trình di chuyển dữ liệu từ thanh ghi ADC sang RAM.
+
+\subsection{Nguyên lý double buffering}
+Bộ đệm DMA được chia thành hai nửa bằng nhau. Khi DMA điền đầy nửa đầu, interrupt Half-Transfer (HT) được kích hoạt để lớp xử lý đọc dữ liệu trong khi DMA tiếp tục điền nửa sau. Khi DMA hoàn tất toàn bộ buffer, interrupt Transfer-Complete (TC) lại đảo vai trò. Cơ chế này đảm bảo không có khoảng trống dữ liệu nào bị bỏ lỡ.
+
+\begin{lstlisting}[caption={Cấu hình DMA cho ADC đa kênh.}, label={lst:adc_dma}]
+void ADC_DMA_Init(void)
+{
+    hadc1.Instance = ADC1;
+    hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
+    hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+    hadc1.Init.ScanConvMode = ENABLE;
+    hadc1.Init.ContinuousConvMode = ENABLE;
+    HAL_ADC_Init(&hadc1);
+
+    hdma_adc1.Instance = DMA1_Channel1;
+    hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+    hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+    hdma_adc1.Init.Mode = DMA_CIRCULAR;
+    HAL_DMA_Init(&hdma_adc1);
+}
+\end{lstlisting}
+
+\section{Xử lý tín hiệu số}
+
+Tín hiệu sEMG thô chứa nhiều thành phần nhiễu: nhiễu tần số công nghiệp (\SI{50}{Hz} hoặc \SI{60}{Hz}), artifact chuyển động ở dải tần thấp (<\SI{20}{Hz}) và nhiễu điện tử ở dải cao (>\SI{500}{Hz}). Do đó, một bộ lọc thông dải là bắt buộc trước khi trích xuất đặc trưng.
+
+\subsection{Bộ lọc IIR thông dải}
+
+Bộ lọc Butterworth bậc 4 với dải thông \SIrange{20}{450}{Hz} được sử dụng nhờ đáp ứng pha tương đối tuyến tính trong dải thông và độ suy giảm nhanh ngoài dải chặn. Hàm truyền đạt dạng rời rạc:
+
+\begin{equation}
+    H(z) = \frac{\sum_{k=0}^{M} b_k z^{-k}}{1 + \sum_{k=1}^{N} a_k z^{-k}}
+    \label{eq:iir}
+\end{equation}
+
+Các hệ số $b_k$, $a_k$ được tính toán trước bằng Python hoặc MATLAB, sau đó nạp vào firmware dưới dạng hằng số biên dịch (compile-time constants) để tránh chi phí tính toán dấu phẩy động lúc chạy.
+
+\subsection{Chỉnh lưu và làm trơn}
+
+Sau khi lọc, tín hiệu được chỉnh lưu toàn sóng (full-wave rectification) rồi đi qua bộ lọc trung bình trượt (moving average) để tạo đường bao biên độ (amplitude envelope). Đường bao này phản ánh mức co cơ và được dùng làm đặc trưng đầu vào cho các thuật toán phân loại cử chỉ.
+
+\section{Truyền dữ liệu}
+
+Dữ liệu sau xử lý được đóng gói theo khung (frame) trước khi truyền qua USB CDC-ACM hoặc BLE GATT notification. Mỗi frame bao gồm:
+
+\begin{itemize}
+    \item \textbf{Header}: 2 byte đồng bộ (\texttt{0xAA 0x55}).
+    \item \textbf{Sequence number}: 1 byte, phát hiện mất gói.
+    \item \textbf{Payload}: dữ liệu sEMG đã xử lý, độ dài thay đổi theo số kênh.
+    \item \textbf{CRC-16}: kiểm tra lỗi truyền dẫn (CCITT polynomial).
+\end{itemize}
+
+Cấu trúc khung gọn nhẹ giúp tối ưu băng thông và phù hợp với giới hạn MTU của BLE (thường \SI{20}{byte} payload mặc định, có thể mở rộng lên \SI{244}{byte} với DLE -- Data Length Extension).

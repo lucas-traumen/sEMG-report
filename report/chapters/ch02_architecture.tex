@@ -1,0 +1,29 @@
+\chapter{Kiến trúc hệ thống}
+\label{ch:architecture}
+
+Hệ thống firmware được tổ chức theo mô hình phân lớp nhằm tách biệt rõ ràng giữa phần cứng, logic xử lý và giao tiếp. Cách thiết kế này giúp dễ dàng kiểm thử từng module độc lập và tái sử dụng code khi thay đổi vi điều khiển đích.
+
+\section{Mô hình phân lớp}
+
+\begin{enumerate}
+    \item \textbf{Lớp HAL (Hardware Abstraction Layer)}: trừu tượng hóa phần cứng -- ADC, DMA, GPIO, Timer, UART. Lớp này cung cấp API thống nhất bất kể dòng MCU cụ thể.
+    \item \textbf{Lớp dịch vụ (Service Layer)}: quản lý bộ đệm vòng (ring buffer), lập lịch tác vụ (task scheduler), và cơ chế đồng bộ hóa giữa các luồng dữ liệu.
+    \item \textbf{Lớp xử lý tín hiệu (Signal Processing Layer)}: triển khai bộ lọc số thời gian thực, thuật toán chỉnh lưu và trích xuất đặc trưng tín hiệu sEMG.
+    \item \textbf{Lớp giao tiếp (Communication Layer)}: đóng gói dữ liệu theo giao thức truyền qua USB CDC-ACM hoặc BLE GATT.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=0.85\textwidth]{figures/architecture.pdf}
+    \fbox{\parbox{0.85\textwidth}{\centering\vspace{3cm}Sơ đồ kiến trúc phân lớp firmware sEMG\vspace{3cm}}}
+    \caption{Kiến trúc phân lớp của firmware sEMG. Mỗi lớp chỉ phụ thuộc vào lớp bên dưới thông qua interface được định nghĩa rõ.}
+    \label{fig:architecture}
+\end{figure}
+
+\section{Luồng dữ liệu tổng quan}
+
+Tín hiệu sEMG từ điện cực đi qua mạch tương tự (khuếch đại, lọc chống alias) trước khi vào ADC. Dữ liệu số được DMA chuyển trực tiếp vào ring buffer mà không cần CPU can thiệp. Khi buffer đầy một nửa (half-transfer interrupt), lớp xử lý tín hiệu được kích hoạt để lọc và trích xuất đặc trưng. Kết quả cuối cùng được đẩy vào hàng đợi truyền (TX queue) để lớp giao tiếp gửi lên host.
+
+\section{Chiến lược quản lý năng lượng}
+
+Thiết bị đeo yêu cầu mức tiêu thụ thấp. Firmware sử dụng chế độ sleep giữa các chu kỳ lấy mẫu, đánh thức bằng interrupt từ Timer hoặc DMA. Các ngoại vi không dùng đến (DAC, SPI phụ) được tắt clock ở mức RCC để giảm dòng rò.

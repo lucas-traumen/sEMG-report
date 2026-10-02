@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+    fiber/.style={semgblue, line width=1.15pt},
+    nerve/.style={semgorange, line width=1.1pt},
+    label/.style={font=\small, align=center}
+]
+% Nơron vận động và axon
+\draw[fill=semgorange!18, draw=semgorange, line width=1pt]
+    (0,1.9) circle (0.48);
+\node[label] at (0,1.9) {nơron\\vận động};
+\draw[nerve] (0.45,1.9) -- (2.1,1.9);
+\node[label, above] at (1.25,1.9) {axon};
+% Các nhánh đến sợi cơ
+\foreach \y in {0.3,0.95,1.6,2.25,2.9,3.55} {
+    \draw[nerve] (2.1,1.9) -- (3.0,\y);
+    \draw[fiber] (3.0,\y) -- (8.9,\y);
+    \fill[semgorange] (3.0,\y) circle (1.7pt);
+    \draw[-{Latex[length=1.5mm]}, semgred, line width=0.7pt]
+        (5.1,\y+0.06) -- (5.85,\y+0.06);
+}
+\node[label, anchor=west] at (9.05,0.3) {sợi cơ 1};
+\node[label, anchor=west] at (9.05,0.95) {sợi cơ 2};
+\node[label, anchor=west] at (9.05,1.6) {sợi cơ 3};
+\node[label, anchor=west] at (9.05,2.25) {sợi cơ 4};
+\node[label, anchor=west] at (9.05,2.9) {sợi cơ 5};
+\node[label, anchor=west] at (9.05,3.55) {sợi cơ 6};
+% Chú thích vùng phát xung
+\draw[dashed, semgred, line width=0.8pt] (3.0,0.02) -- (3.0,3.83);
+\node[label, text=semgred, rotate=90] at (2.67,1.92) {khớp thần kinh--cơ};
+\node[label, below=7mm of $(6.0,0.3)$, text width=8.5cm]
+    {Một đơn vị vận động gồm một nơron vận động và toàn bộ các sợi cơ do nó chi phối.
+    Mũi tên đỏ biểu diễn hướng lan truyền điện thế hoạt động trên màng sợi cơ.};
+\end{tikzpicture}

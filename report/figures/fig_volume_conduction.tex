@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+    electrode/.style={draw=semgred, fill=semgred!18, rounded corners=1pt,
+        minimum width=0.75cm, minimum height=0.28cm, font=\scriptsize},
+    layer/.style={draw=black!45, line width=0.4pt},
+    annot/.style={font=\scriptsize, align=center},
+    signal/.style={-{Latex[length=1.6mm]}, semgorange, line width=0.7pt}
+]
+% Các lớp mô
+\fill[semglight] (0,2.8) rectangle (12.8,3.65);
+\fill[semgorangelight] (0,1.55) rectangle (12.8,2.8);
+\fill[semggreenlight] (0,0) rectangle (12.8,1.55);
+\draw[layer] (0,2.8) -- (12.8,2.8);
+\draw[layer] (0,1.55) -- (12.8,1.55);
+\draw[layer] (0,0) -- (12.8,0);
+\node[annot, anchor=west] at (0.15,3.22) {da};
+\node[annot, anchor=west] at (0.15,2.15) {mỡ dưới da};
+\node[annot, anchor=west] at (0.15,0.72) {cơ};
+% Sợi cơ và IZ
+\foreach \y in {0.32,0.68,1.04,1.38} {
+    \draw[semgblue, line width=1pt] (2.5,\y) -- (11.9,\y);
+}
+\draw[dashed, semgred, line width=0.8pt] (6.1,0) -- (6.1,1.55);
+\node[annot, text=semgred, rotate=90] at (5.82,0.78) {IZ};
+% Điện cực và IED
+\node[electrode] (e1) at (5.0,3.86) {$E_1$};
+\node[electrode] (e2) at (7.25,3.86) {$E_2$};
+\draw[<->, semgblue, line width=0.7pt] (5.0,4.16) --
+    node[above, font=\scriptsize] {IED} (7.25,4.16);
+\draw[signal] (5.0,3.82) -- (5.0,2.95);
+\draw[signal] (7.25,3.82) -- (7.25,2.95);
+% Hướng lan truyền
+\draw[-{Latex[length=1.7mm]}, semgred, line width=0.8pt] (6.1,0.35) -- (4.4,0.35);
+\draw[-{Latex[length=1.7mm]}, semgred, line width=0.8pt] (6.1,0.72) -- (7.8,0.72);
+\node[annot, anchor=west] at (8.1,0.92) {điện thế lan truyền\
+    theo hai phía của IZ};
+\node[annot, anchor=north] at (10.0,3.63)
+    {cặp điện cực đặt song song\với chiều thớ cơ};
+\end{tikzpicture}

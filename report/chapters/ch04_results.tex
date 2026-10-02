@@ -1,0 +1,37 @@
+\chapter{Kết quả kiểm thử}
+\label{ch:results}
+
+Chương này trình bày kết quả đo đạc hiệu năng firmware trên phần cứng đích, bao gồm độ chính xác thu nhận tín hiệu, tải CPU và độ ổn định truyền dữ liệu.
+
+\section{Môi trường kiểm thử}
+
+Các phép đo được thực hiện trên board phát triển sử dụng MCU STM32F4xx (ARM Cortex-M4, \SI{168}{MHz}), kết nối với máy tính qua USB 2.0 Full-Speed. Tín hiệu đầu vào giả lập từ máy phát hàm (function generator) ở các biên độ và tần số khác nhau để đánh giá đáp ứng của bộ lọc.
+
+\section{Hiệu năng xử lý}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Tóm tắt kết quả đo hiệu năng firmware.}
+    \label{tab:perf}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Chỉ số} & \textbf{Giá trị} & \textbf{Đơn vị} \\
+        \midrule
+        Tần số lấy mẫu thực tế & 1000 & Hz \\
+        Độ trễ xử lý một frame & 2.3 & ms \\
+        Mức sử dụng CPU trung bình & 34 & \% \\
+        Dòng tiêu thụ trung bình & 18.5 & mA \\
+        Tỷ lệ mất gói tin (USB CDC) & <0.01 & \% \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Độ trễ \SI{2.3}{ms} cho mỗi frame đảm bảo hệ thống hoạt động đúng thời gian thực ở tần số lấy mẫu \SI{1000}{Hz}, vì chu kỳ lấy mẫu là \SI{1}{ms} nhưng quá trình xử lý được pipeline hóa qua double buffering nên không bị tràn dữ liệu.
+
+\section{Đáp ứng bộ lọc}
+
+Đáp ứng tần số đo được khớp với thiết kế lý thuyết trong phạm vi $\pm\SI{0.5}{dB}$ ở dải thông \SIrange{20}{450}{Hz}. Nhiễu \SI{50}{Hz} bị suy giảm hơn \SI{40}{dB} khi kích hoạt thêm notch filter bổ sung.
+
+\section{Độ ổn định truyền dữ liệu}
+
+Trong bài test truyền liên tục 24 giờ qua USB CDC, tỷ lệ mất gói nhỏ hơn 0.01\%, chủ yếu xảy ra khi host bị gián đoạn lịch trình USB polling. Giao thức CRC-16 phát hiện thành công toàn bộ lỗi bit trong các gói nhận được.

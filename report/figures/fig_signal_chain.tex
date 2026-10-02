@@ -1,0 +1,21 @@
+\begin{tikzpicture}[
+    stage/.style={draw=semgblue, rounded corners=2pt, fill=semglight,
+        align=center, text width=2.05cm, minimum height=1.05cm,
+        inner sep=3pt, font=\small},
+    arrow/.style={-{Latex[length=2mm]}, semgblue, line width=0.8pt}
+]
+\node[stage] (command) {Lệnh vận động\\\scriptsize hệ thần kinh trung ương};
+\node[stage, right=4mm of command] (mu) {Nơron vận động\\và đơn vị vận động};
+\node[stage, right=4mm of mu] (muap) {SFAP $\rightarrow$ MUAP\\\scriptsize chuỗi MUAP};
+\node[stage, right=4mm of muap] (volume) {Dẫn truyền thể tích\\và điện cực};
+\node[stage, right=4mm of volume] (measure) {$x(t)$\\\scriptsize tín hiệu vi sai};
+\node[stage, right=4mm of measure] (features) {Đặc trưng\\và diễn giải có điều kiện};
+\draw[arrow] (command) -- (mu);
+\draw[arrow] (mu) -- (muap);
+\draw[arrow] (muap) -- (volume);
+\draw[arrow] (volume) -- (measure);
+\draw[arrow] (measure) -- (features);
+\node[below=5mm of volume, align=center, text width=6.2cm, font=\footnotesize,
+    text=semgred] {Mỗi mũi tên là một phép biến đổi hoặc phép suy luận;\
+    chỉ $x(t)$ là đại lượng điện áp được đo trực tiếp.};
+\end{tikzpicture}

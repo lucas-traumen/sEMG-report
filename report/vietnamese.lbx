@@ -1,0 +1,26 @@
+\ProvidesFile{vietnamese.lbx}[2026/09/27 v1.0 Biblatex strings tieng Viet (toi thieu)]
+
+% Ban dia hoa tieng Viet toi thieu cho biblatex.
+% Biblatex khong kem file ngon ngu vietnamese; khong co file nay, cac chuoi
+% ban dia hoa (vol., no., pp., ...) se duoc in ra nhu ten khoa raw
+% (vi du "jourvol"). File nay ke thua toan bo dinh dang va chuoi tu
+% english.lbx, chi dich cac chuoi xuat hien trong danh muc tai lieu tham khao
+% cua bao cao nay. Chuoi nao khong duoc dich se ke thua ban tieng Anh.
+
+\InheritBibliographyExtras{english}
+
+\DeclareBibliographyStrings{%
+  inherit          = {english},
+  bibliography     = {{T\`ai li\d{\^e}u tham kh\h{a}o}{T\`ai li\d{\^e}u tham kh\h{a}o}},
+  references       = {{T\`ai li\d{\^e}u tham kh\h{a}o}{T\`ai li\d{\^e}u tham kh\h{a}o}},
+  and              = {{v\`a}{v\`a}},
+  andothers        = {{v\`a cộng sự}{v\`a cộng sự}},
+  in               = {{trong}{trong}},
+  volume           = {{t\d{\^a}p}{t\adddot}},
+  jourvol          = {{t\d{\^a}p}{t\adddot}},
+  number           = {{s\^{o}}{s\^{o}}},
+  page             = {{trang}{tr\adddot}},
+  pages            = {{trang}{tr\adddot}},
+}
+
+\endinput

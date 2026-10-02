@@ -1,0 +1,24 @@
+\chapter{Kết luận và hướng phát triển}
+\label{ch:conclusion}
+
+\section{Kết luận}
+
+Firmware sEMG đã được thiết kế và triển khai theo kiến trúc phân lớp, đáp ứng các yêu cầu cốt lõi:
+
+\begin{itemize}
+    \item Thu nhận tín hiệu ADC đa kênh đồng bộ ở tần số \SI{1000}{Hz} thông qua DMA, giải phóng CPU khỏi việc di chuyển dữ liệu.
+    \item Lọc nhiễu thời gian thực bằng bộ lọc IIR Butterworth bậc 4, dải thông \SIrange{20}{450}{Hz}, với hệ số được tính toán trước để tối ưu hiệu năng.
+    \item Truyền dữ liệu ổn định qua USB CDC với tỷ lệ mất gói dưới 0.01\%, đảm bảo toàn vẹn bằng CRC-16.
+    \item Mức tiêu thụ năng lượng phù hợp cho thiết bị đeo (dòng trung bình \SI{18.5}{mA}).
+\end{itemize}
+
+\section{Hướng phát triển}
+
+Một số hướng mở rộng trong tương lai:
+
+\begin{enumerate}
+    \item \textbf{Nhận dạng cử chỉ trên MCU}: tích hợp mô hình phân loại (classifier) nhẹ như SVM hoặc mạng neural lượng tử hóa (quantized TFLite Micro) trực tiếp trên firmware để nhận dạng cử chỉ tay theo thời gian thực.
+    \item \textbf{Cập nhật OTA}: bổ sung bootloader hỗ trợ cập nhật firmware không dây qua BLE DFU (Device Firmware Update), giúp triển khai bản vá mà không cần kết nối vật lý.
+    \item \textbf{Tăng số kênh}: mở rộng từ 4 lên 8--16 kênh thu nhận đồng thời, đòi hỏi tối ưu hơn về băng thông DMA và dung lượng RAM.
+    \item \textbf{Tích hợp cảm biến quán tính (IMU)}: kết hợp dữ liệu sEMG với gia tốc kế/con quay hồi chuyển để cải thiện độ chính xác nhận dạng cử chỉ trong các ứng dụng điều khiển prosthesis.
+\end{enumerate}

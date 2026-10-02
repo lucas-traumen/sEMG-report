@@ -1,0 +1,123 @@
+\documentclass[12pt,a4paper]{report}
+
+% --- Encoding & Fonts ---
+% XeLaTeX xử lý trực tiếp Unicode tiếng Việt; dùng font có đầy đủ ký tự
+% thay vì font Latin Modern T1 vốn thiếu nhiều chữ tiếng Việt.
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{DejaVu Sans Mono}
+
+% --- Language ---
+\usepackage[vietnamese]{babel}
+\usepackage[autostyle]{csquotes} % yeu cau cua biblatex khi dung babel
+
+% csquotes khong kem quote style cho tieng Viet; khong khai bao nay,
+% \enquote (dung cho tieu de trong thu muc IEEE) se roi vao fallback
+% style va in dau "?" thay vi dau ngoac kep (xac minh bang repro
+% 2026-09-27). Dung ngoac kep cong U+201C/U+201D nhu tieng Anh.
+\DeclareQuoteStyle{vietnamese}
+  {\textquotedblleft}
+  {\textquotedblright}
+  {\textquoteleft}
+  {\textquoteright}
+
+% Cho phep TeX gia them do co gian khi khong tim duoc diem ngat dong
+% (cac tieu de tieng Anh dai trong muc luc tai lieu tham khao).
+\emergencystretch=2em
+
+% --- Page Layout ---
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=2cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Math ---
+\usepackage{amsmath, amssymb, amsfonts}
+
+% --- Graphics & Tables ---
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% --- Sơ đồ và đồ thị minh họa ---
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,fit,positioning,shapes.geometric}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+
+\definecolor{semgblue}{RGB}{30,90,140}
+\definecolor{semggreen}{RGB}{45,125,85}
+\definecolor{semgorange}{RGB}{205,110,35}
+\definecolor{semgred}{RGB}{175,55,55}
+\definecolor{semglight}{RGB}{235,243,249}
+\definecolor{semggreenlight}{RGB}{235,247,239}
+\definecolor{semgorangelight}{RGB}{252,243,230}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% --- Code Listings ---
+\usepackage{listings}
+
+\lstdefinestyle{firmware}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!70!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    tabsize=4,
+    showstringspaces=false,
+    morekeywords={uint8_t, uint16_t, uint32_t, int8_t, int16_t, int32_t, size_t, HAL_StatusTypeDef}
+}
+\lstset{style=firmware}
+
+% --- Hyperlinks & References ---
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+% --- Bibliography ---
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{references.bib}
+
+% --- Title Info ---
+\title{\textbf{Báo cáo dự án sEMG Firmware}\\
+    \large Hệ thống thu nhận và xử lý tín hiệu điện cơ bề mặt}
+\author{Tên tác giả}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+% ==================== CÁC CHAPTER ====================
+% Phiên bản hiện tại của báo cáo chỉ gồm chương lý thuyết sEMG (quyết định
+% phạm vi P0, PROJECT_MEMORY.md 2026-09-27). Bộ đếm chương được đặt trước
+% để chương này hiển thị là "Chương 2" theo số thứ tự của báo cáo đầy đủ.
+% Lưu ý: siunitx đã bỏ khỏi preamble vì gói chưa cài trong môi trường build;
+% chương hiện tại không dùng siunitx.
+\setcounter{chapter}{1}
+\input{chapters/ch02_semg_theory}
+
+% ==================== TÀI LIỆU THAM KHẢO ====================
+
+\printbibliography[heading=bibintoc, title={Tài liệu tham khảo}]
+
+\end{document}

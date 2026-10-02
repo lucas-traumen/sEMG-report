@@ -1,0 +1,26 @@
+\begin{tikzpicture}[
+    block/.style={draw=semgblue, rounded corners=2pt, fill=semglight,
+        align=center, text width=2.25cm, minimum height=1.0cm,
+        inner sep=3pt, font=\small},
+    project/.style={draw=semggreen, rounded corners=2pt, fill=semggreenlight,
+        align=center, text width=2.35cm, minimum height=1.0cm,
+        inner sep=3pt, font=\small},
+    arrow/.style={-{Latex[length=2mm]}, line width=0.8pt, semgblue},
+    note/.style={font=\scriptsize, align=center, text=black!70}
+]
+\node[block] (electrode) {Cặp điện cực\\$E_1,E_2$};
+\node[block, right=5mm of electrode] (afe) {Giao diện da--điện cực\\khuếch đại vi sai};
+\node[project, right=5mm of afe] (ads) {ADS1292R\\PGA + ADC};
+\node[project, right=5mm of ads] (mcu) {STM32F767ZI\\xử lý và đệm};
+\node[project, right=5mm of mcu] (host) {UART/USB\\host phân tích};
+\draw[arrow] (electrode) -- (afe);
+\draw[arrow] (afe) -- (ads);
+\draw[arrow] (ads) -- node[above, note] {SPI1\\DRDY} (mcu);
+\draw[arrow] (mcu) -- node[above, note] {stream dữ liệu} (host);
+\node[note, below=6mm of afe, text width=3.0cm]
+    {lọc chống alias và giới hạn băng thông
+    nằm trong chuỗi tương tự/ADC};
+\node[note, below=6mm of mcu, text width=3.4cm]
+    {sơ đồ khối rút từ wiring và mã firmware hiện tại;
+    không thay thế sơ đồ nguyên lý};
+\end{tikzpicture}
