@@ -11,7 +11,7 @@
 \node[block] (electrode) {Cặp điện cực\\$E_1,E_2$};
 \node[block, right=5mm of electrode] (afe) {Giao diện da--điện cực\\khuếch đại vi sai};
 \node[project, right=5mm of afe] (ads) {ADS1292R\\PGA + ADC};
-\node[project, right=5mm of ads] (mcu) {STM32F767ZI\\xử lý và đệm};
+\node[project, right=5mm of ads, text width=2.85cm] (mcu) {STM32F767ZI\\xử lý và đệm};
 \node[project, right=5mm of mcu] (host) {UART/USB\\host phân tích};
 \draw[arrow] (electrode) -- (afe);
 \draw[arrow] (afe) -- (ads);
