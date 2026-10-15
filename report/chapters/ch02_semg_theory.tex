@@ -31,10 +31,12 @@ cho một phép đo sinh lý cụ thể hay một kết quả thực nghiệm c�
 
 Cơ xương được tổ chức thành các bó cơ; mỗi bó gồm nhiều sợi cơ là các tế
 bào có khả năng co rút. Mỗi sợi cơ được kích hoạt bởi một nơron vận động
-alpha qua khớp thần kinh--cơ. Khi xung thần kinh đến tận cùng axon, chất
-dẫn truyền thần kinh được giải phóng và tạo ra điện thế cục bộ trên màng
-sợi cơ. Nếu điện thế đạt ngưỡng, sợi cơ phát điện thế hoạt động và khởi
-phát quá trình co \cite{mcmanus2020analysis,merletti2004electromyography}.
+alpha qua khớp thần kinh--cơ. Khi xung thần kinh đến tận cùng axon, acetylcholine được giải phóng tại
+khớp thần kinh--cơ và gắn lên các thụ thể ở màng sau synapse, tạo điện thế
+tấm tận cùng. Nếu điện thế này đưa màng sợi cơ tới ngưỡng, các kênh ion
+phụ thuộc điện thế được hoạt hóa, điện thế hoạt động của sợi cơ được khởi
+phát và sau đó dẫn đến quá trình co
+\cite{mcmanus2020analysis,merletti2004electromyography}.
 
 Đơn vị vận động (motor unit, MU) là một nơron vận động alpha cùng toàn bộ
 các sợi cơ do nơron đó chi phối. Các sợi thuộc cùng một MU thường phân bố
@@ -61,11 +63,12 @@ qua màng, bơm Na$^+$/K$^+$-ATPase và tính thấm chọn lọc của màng
 \cite{merletti2004electromyography,mcmanus2020analysis}. Khi kích thích tại
 khớp thần kinh--cơ vượt ngưỡng, các kênh ion phụ thuộc điện thế mở và tạo
 ra điện thế hoạt động (action potential, AP). AP là một biến đổi điện thế
-ngắn, lan truyền tự duy trì dọc theo sarcolemma với vận tốc hữu hạn
-\cite{merletti2004electromyography}.
+ngắn, lan truyền tự duy trì dọc theo màng sợi cơ (sarcolemma) với vận tốc
+hữu hạn \cite{merletti2004electromyography}.
 
-Điện thế hoạt động lan vào hệ thống ống ngang, kích thích giải phóng
-Ca$^{2+}$ từ mạng lưới nội bào và khởi phát cơ chế trượt sợi cơ. Quan hệ
+Điện thế hoạt động lan dọc màng sợi cơ và vào hệ thống ống ngang, kích
+thích giải phóng Ca$^{2+}$ từ lưới cơ tương và khởi phát chu trình cầu nối
+chéo giữa actin và myosin. Quan hệ
 này giải thích vì sao hoạt động điện có thể dẫn đến sinh lực ở cấp sợi cơ,
 nhưng không cho phép suy ngược một-một từ điện áp đo trên da ra lực của
 toàn bộ cơ. Lực còn phụ thuộc chiều dài, vận tốc co, tính đàn hồi của gân,
@@ -98,8 +101,9 @@ chuỗi xung của một MU và tổng giao thoa của nhiều MU. Đồ thị c
 \end{figure}
 
 Hai cơ chế chính làm thay đổi mức hoạt hóa của cơ là tuyển mộ MU và mã hóa
-tần suất. Tuyển mộ làm tăng số MU tham gia khi yêu cầu vận động tăng; mã
-hóa tần suất làm thay đổi tốc độ phát xung của các MU đã được tuyển mộ.
+tần số phát xung. Tuyển mộ làm tăng số MU tham gia khi yêu cầu vận động
+tăng; mã hóa tần số phát xung làm thay đổi tốc độ phát xung của các MU đã
+được tuyển mộ.
 Hai cơ chế này thay đổi cả số lượng lẫn thời điểm của các MUAP, vì vậy làm
 thay đổi biên độ và phân bố phổ của tín hiệu giao thoa
 \cite{mcmanus2020analysis,merletti2004electromyography}.
@@ -119,7 +123,7 @@ mà một kênh sEMG có thể tiếp cận.
 \toprule
 \textbf{Lớp hiện tượng} & \textbf{Ý nghĩa} & \textbf{Quan hệ với sEMG} \\
 \midrule
-Hoạt hóa điện & Các MU phát xung và tạo điện thế hoạt động trên sợi cơ. & Là lớp được phản ánh trực tiếp nhất qua hiệu điện thế vi sai trên da. \\
+Hoạt hóa điện & Các MU phát xung và tạo điện thế hoạt động trên sợi cơ. & Được phản ánh gián tiếp qua tổng hiệu điện thế vi sai đo trên da trong vùng thu nhận. \\
 Co cơ & Chuyển đổi kích thích điện thành sinh lực ở cấp sợi cơ. & Có liên quan nhân quả với hoạt hóa điện nhưng còn phụ thuộc trạng thái cơ học. \\
 Lực cơ & Hợp lực truyền qua các sợi cơ và gân. & Chỉ có thể suy luận trong điều kiện cố định và cần hiệu chuẩn hoặc phép đo lực độc lập. \\
 Chuyển động & Kết quả của mô-men từ nhiều cơ, tải ngoài và khối lượng. & Không được đo trực tiếp bằng một kênh sEMG; thường cần cảm biến chuyển động hoặc lực bổ sung. \\
@@ -127,8 +131,10 @@ Chuyển động & Kết quả của mô-men từ nhiều cơ, tải ngoài và 
 \end{tabularx}
 \end{table}
 
-sEMG chỉ tiếp cận trực tiếp lớp hoạt hóa điện. Quan hệ giữa hoạt hóa điện
-và lực có thể tăng theo chiều đơn điệu trong một dải điều kiện hẹp, nhưng
+sEMG đo trực tiếp hiệu điện thế vi sai trên da; từ tín hiệu này chỉ có thể
+suy luận có điều kiện về hoạt hóa điện của các MU trong vùng thu nhận.
+Quan hệ giữa đặc trưng sEMG và lực có thể tăng theo chiều đơn điệu trong
+một dải điều kiện hẹp, nhưng
 phi tuyến và phụ thuộc cơ, nhiệm vụ, tư thế, loại co và mức lực
 \cite{mcmanus2020analysis,deluca2006electromyography,merletti2004electromyography}.
 Do đó, phát biểu “biên độ sEMG cao đồng nghĩa lực cơ lớn” chỉ hợp lệ khi các
@@ -184,7 +190,10 @@ vùng thu; $h_m(t)$ [V] là MUAP của MU thứ $m$ sau tác dụng của dẫn 
 thể tích; $t_{m,k}$ [s] là thời điểm phát xung thứ $k$; $N_m$ là số xung
 trong khoảng phân tích; và $n(t)$ [V] là nhiễu tổng hợp. Mô hình này giải
 thích vì sao tín hiệu có dạng giống nhiễu ở mức co trung bình hoặc cao và
-vì sao một kênh thông thường không cho phép nhận diện trực tiếp từng MU
+vì sao một kênh thông thường không cho phép nhận diện trực tiếp từng MU.
+Đây là phép gần đúng tuyến tính và gần dừng trong một cửa sổ ngắn; dạng
+$h_m(t)$ có thể thay đổi khi vận tốc dẫn truyền hoặc hình học
+nguồn--điện cực thay đổi
 \cite{campanini2022fundamental,mcmanus2020analysis}.
 
 \subsection{Vị trí, hướng, kích thước và khoảng cách điện cực}
@@ -201,10 +210,10 @@ tắc chính được tóm tắt trong Bảng~\ref{tab:electrode-geometry}.
 \toprule
 \textbf{Yếu tố} & \textbf{Ảnh hưởng vật lý} & \textbf{Hệ quả khi đo} \\
 \midrule
-Vị trí so với IZ & Gần IZ, dạng MUAP và biên độ có thể thay đổi; gần điểm nối cơ--gân, tín hiệu thường suy giảm. & Phải cố định vị trí giữa các lần đo và mô tả bằng mốc giải phẫu. \\
+Vị trí so với IZ & Gần IZ hoặc điểm nối cơ--gân, biên độ, hình dạng MUAP và phân bố phổ có thể thay đổi rõ. & Phải cố định vị trí giữa các lần đo và mô tả bằng mốc giải phẫu. \\
 Hướng điện cực & Trục điện cực song song thớ cơ thường cho đáp ứng ổn định hơn. & Đặt sai hướng làm thay đổi biên độ và hình dạng phổ. \\
-Kích thước điện cực & Điện cực lớn thu vùng rộng hơn; điện cực nhỏ tăng chọn lọc không gian đối với nguồn nông. & Cần chọn theo cơ, độ sâu nguồn và mục tiêu nghiên cứu. \\
-IED & IED nhỏ tăng chọn lọc nguồn nông; IED lớn tăng vùng thu và nhạy hơn với nguồn sâu. & IED phải được ghi rõ; SENIAM đưa 20~mm như một khuyến nghị chuẩn hóa phổ biến, không phải quy tắc bất biến. \\
+Kích thước điện cực & Điện cực lớn thực hiện trung bình không gian trên vùng rộng hơn; điện cực nhỏ tăng tính chọn lọc không gian. & Cần chọn theo kích thước cơ, hình học nguồn và mục tiêu nghiên cứu. \\
+IED & IED nhỏ thường làm giảm vùng thu; IED lớn mở rộng vùng thu và có thể tăng đóng góp của các nguồn xa hơn, đồng thời tăng nguy cơ crosstalk. & IED phải được ghi rõ; SENIAM đưa 20~mm như một khuyến nghị chuẩn hóa phổ biến, không phải quy tắc bất biến. \\
 Crosstalk & Hoạt động của cơ lân cận truyền qua mô và trộn vào kênh đo. & Không thể loại bỏ hoàn toàn chỉ bằng lọc tần số; cần tối ưu vị trí, hướng và IED. \\
 \bottomrule
 \end{tabularx}
@@ -239,10 +248,12 @@ mạch bù dòng (bias/DRL) để ổn định điện thế chung của cơ th�
 
 Chất lượng phép đo phụ thuộc mạnh vào giao diện da--điện cực. Điện cực
 Ag/AgCl có gel dẫn điện tạo tiếp xúc galvanic; lớp sừng khô làm tăng trở
-kháng và nhạy với artifact chuyển động. Làm sạch và chuẩn bị da nhằm giảm
-trở kháng cũng như chênh lệch trở kháng giữa hai điện cực. Khả năng triệt
-tín hiệu chung của bộ khuếch đại được mô tả bằng CMRR (common-mode
-rejection ratio); CMRR cao giúp giảm nhiễu đồng pha còn lại
+kháng và độ nhạy với nhiễu giả do chuyển động (motion artifact). Làm sạch
+và chuẩn bị da nhằm giảm trở kháng cũng như chênh lệch trở kháng giữa hai
+điện cực. Khả năng triệt tín hiệu chung của bộ khuếch đại được mô tả bằng
+CMRR (common-mode rejection ratio). CMRR cao là cần thiết nhưng chưa đủ:
+khi trở kháng hai tiếp xúc mất cân bằng, một phần tín hiệu đồng pha được
+chuyển thành thành phần vi sai và vẫn bị khuếch đại
 \cite{hermens2000development,boyer2023reducing}.
 
 \subsection{Chuỗi thu nhận của hệ thống tham chiếu}
@@ -288,7 +299,8 @@ chuẩn bị da \cite{merletti1999standards,besomi2024cede}.
 Các nguồn làm giảm chất lượng tín hiệu và cách kiểm soát được tổng hợp
 trong Bảng~\ref{tab:noise-mitigation}. Bảng phân biệt biện pháp ở giao
 diện/phần cứng với biện pháp xử lý số, vì lọc số không thể phục hồi thông
-tin đã bị mất do clipping hoặc aliasing.
+tin đã bị mất do clipping hoặc aliasing
+\cite{boyer2023reducing,deluca2010filtering}.
 
 \begin{table}[htbp]
 \centering
@@ -299,7 +311,7 @@ tin đã bị mất do clipping hoặc aliasing.
 \textbf{Nguồn} & \textbf{Biểu hiện hoặc cơ chế} & \textbf{Biện pháp kiểm soát và giới hạn} \\
 \midrule
 Nhiễu mạng điện & Thành phần 50/60~Hz và hài đi vào qua ghép điện dung hoặc cảm ứng. & Đo vi sai, CMRR cao, nối đất/chắn nhiễu hợp lý; notch chỉ loại một vùng phổ và có thể làm biến dạng phổ. \\
-Artifact chuyển động & Thay đổi cơ học của tiếp xúc da--điện cực, cáp và hình học nguồn--điện cực; thường tập trung ở tần số thấp. & Cố định điện cực/cáp, chuẩn bị da và chọn lọc thông cao phù hợp; cắt tần số quá cao có thể làm mất thành phần sEMG. \\
+Nhiễu giả do chuyển động & Thay đổi cơ học của tiếp xúc da--điện cực, cáp và hình học nguồn--điện cực; thường tập trung ở tần số thấp. & Cố định điện cực/cáp, chuẩn bị da và chọn lọc thông cao phù hợp; cắt tần số quá cao có thể làm mất thành phần sEMG. \\
 Nhiễu điện tử & Nhiễu nhiệt và nhiễu của bộ khuếch đại, thường quy về đầu vào. & Chọn front-end có nhiễu thấp, gain phù hợp và kiểm tra khi đầu vào ngắn mạch. \\
 Crosstalk & Tín hiệu của cơ lân cận trộn vào vùng thu qua dẫn truyền thể tích. & Tối ưu vị trí, hướng, kích thước và IED; không thể loại bỏ hoàn toàn bằng lọc tần số. \\
 Bão hòa/clipping & Biên độ vượt miền động của khuếch đại hoặc ADC làm cắt đỉnh. & Chọn gain và miền đo có dự trữ; mẫu đã clipping không thể khôi phục đáng tin cậy bằng xử lý số. \\
@@ -315,13 +327,14 @@ Trong ứng dụng tổng quát, năng lượng sEMG bề mặt thường trải
 số thấp đến vài trăm hertz; băng thông cụ thể phải được chọn theo cơ,
 nhiệm vụ và front-end, không được mặc định như một hằng số phổ quát
 \cite{hermens2000development,merletti1999standards,mcmanus2020analysis}.
-Nếu $f_{\max}$ là tần số cao nhất cần giữ sau lọc, tần số lấy mẫu phải thỏa
+Nếu $f_H$ là biên trên của dải tần cần giữ sau lọc chống alias tương tự,
+điều kiện lấy mẫu lý tưởng là
 \begin{equation}
 \label{eq:nyquist}
-f_s \geq 2f_{\max}.
+f_s > 2f_H.
 \end{equation}
-Trong thực hành thường chọn dư một khoảng để bộ lọc khôi phục có vùng
-chuyển tiếp. Lọc chống alias tương tự phải đặt trước lượng tử hóa vì
+Trong thực hành cần chọn thêm khoảng dự trữ để bộ lọc chống alias có vùng
+chuyển tiếp. Bộ lọc này phải được đặt trước ADC và trước khi lấy mẫu, vì
 aliasing không thể được loại bỏ sau khi đã xảy ra
 \cite{merletti1999standards,boyer2023reducing}.
 
@@ -404,29 +417,41 @@ Với đoạn $N$ mẫu, biến đổi Fourier rời rạc được viết:
 X[k]=\sum_{n=0}^{N-1}x[n]e^{-j2\pi kn/N},\qquad
 k=0,1,\ldots,N-1.
 \end{equation}
-Tần số tại chỉ số $k$ là $f_k=kf_s/N$ và độ phân giải là
-$\Delta f=f_s/N$. Mật độ phổ công suất (power spectral density, PSD) có
-thể được ước lượng bằng phương pháp Welch: chia đoạn thành các phần có
-chồng lấp, áp hàm cửa sổ, tính periodogram rồi trung bình để giảm phương
-sai \cite{muceli2024tutorial}.
+Đối với phổ một phía của tín hiệu thực, các bin được diễn giải trong
+khoảng $0\leq k\leq\lfloor N/2\rfloor$, với
+$f_k=kf_s/N$ và độ phân giải $\Delta f=f_s/N$; các bin còn lại của DFT
+hai phía tương ứng với tần số âm. Mật độ phổ công suất (power spectral
+density, PSD) có thể được ước lượng bằng phương pháp Welch: chia đoạn
+thành các phần có chồng lấp, áp hàm cửa sổ, tính periodogram rồi trung
+bình để giảm phương sai \cite{muceli2024tutorial}.
 
-Tần số trung bình phổ (mean frequency, MNF) được tính bởi
+Gọi $\mathcal{B}=\{k:f_L\leq f_k\leq f_H\}$ là tập bin thuộc dải phân
+tích đã khai báo trên PSD một phía $P[k]$. Tần số trung bình phổ (mean
+frequency, MNF) được tính bởi
 \begin{equation}
 \label{eq:mnf}
-\mathrm{MNF}=\frac{\sum_k f_kP(f_k)}{\sum_kP(f_k)}\quad[\mathrm{Hz}],
+\mathrm{MNF}
+=\frac{\displaystyle\sum_{k\in\mathcal{B}} f_kP[k]}
+       {\displaystyle\sum_{k\in\mathcal{B}} P[k]}
+\quad[\mathrm{Hz}].
 \end{equation}
-trong đó $P(f_k)$ là PSD. Tần số trung vị phổ (median frequency, MDF) là
-giá trị chia tổng công suất thành hai phần bằng nhau:
+Tần số trung vị phổ (median frequency, MDF) là tần số bin nhỏ nhất mà công
+suất tích lũy đạt ít nhất một nửa tổng công suất trong dải phân tích:
 \begin{equation}
 \label{eq:mdf}
-\sum_{f_k\leq f_{\mathrm{MDF}}}P(f_k)
-=\frac{1}{2}\sum_kP(f_k).
+f_{\mathrm{MDF}}
+=\min\!\left\{
+f_r:
+\sum_{\substack{k\in\mathcal{B}\\ f_k\leq f_r}} P[k]
+\geq \frac{1}{2}\sum_{k\in\mathcal{B}}P[k]
+\right\}.
 \end{equation}
 
-MNF và MDF là các đại lượng tính toán trực tiếp từ tín hiệu, nhưng chịu
-ảnh hưởng của băng thông, $f_s$, độ dài và kiểu cửa sổ, phương pháp ước
-lượng PSD, vị trí điện cực và IED. Không nên so sánh chúng giữa các phép
-đo có cấu hình khác nhau \cite{muceli2024tutorial,merletti1999standards,mcmanus2020analysis}.
+MNF và MDF là các đại lượng dẫn xuất từ tín hiệu, chịu ảnh hưởng của dải
+phân tích $[f_L,f_H]$, $f_s$, độ dài và kiểu cửa sổ, phương pháp ước lượng
+PSD, cách xử lý thành phần DC và nhiễu mạng điện, vị trí điện cực và IED.
+Không nên so sánh chúng giữa các phép đo có cấu hình khác nhau
+\cite{muceli2024tutorial,merletti1999standards,mcmanus2020analysis}.
 
 \begin{figure}[htbp]
     \centering
@@ -466,9 +491,11 @@ một nhiệm vụ tham chiếu. Không có một cách chuẩn hóa phổ duy n
 chấp nhận cho mọi ứng dụng, nên đặc trưng phổ phụ thuộc chặt vào việc giữ
 nguyên cấu hình đo \cite{besomi2020consensus}.
 
-FFT và PSD giả định tín hiệu gần dừng trong cửa sổ. Điều kiện này phù hợp
-hơn với co đẳng trường giữ ổn định; với co động, phổ biến đổi theo pha và
-cần phân tích thời gian--tần số hoặc phân đoạn theo pha
+FFT là phép biến đổi toán học và không tự đòi hỏi tính dừng. Tuy nhiên,
+việc diễn giải periodogram hoặc PSD của một cửa sổ như phổ đại diện đòi
+hỏi tín hiệu gần dừng trong cửa sổ đó. Điều kiện này phù hợp hơn với co
+đẳng trường giữ ổn định; với co động, phổ biến đổi theo pha và cần phân
+tích thời gian--tần số hoặc phân đoạn theo pha
 \cite{knaflitz1999time,muceli2024tutorial,cifrek2009surface}.
 
 % ============================================================
@@ -482,11 +509,12 @@ của ba câu trả lời không giống nhau.
 \subsection{Cơ hoạt động khi nào}
 \label{sec:question-onset}
 
-Onset/offset là câu hỏi mà sEMG thường cung cấp bằng chứng trực tiếp nhất:
-đặc trưng biên độ vượt nền cho thấy hoạt động điện tăng trong vùng thu.
-Tuy nhiên, thời điểm phụ thuộc thuật toán, ngưỡng, cửa sổ và lọc; “hoạt
-động” ở đây là hoạt động điện cục bộ, không phải lực khớp hay chuyển động
-toàn thân \cite{mcmanus2020analysis,boyer2023reducing}.
+Onset/offset được xác định bằng thuật toán từ sự tăng biên độ hoặc năng
+lượng tín hiệu so với nền. Đây là một định nghĩa thao tác: thời điểm thu
+được phụ thuộc thuật toán, ngưỡng, cửa sổ và bộ lọc, đồng thời không nhất
+thiết trùng với thời điểm bắt đầu sinh lực. “Hoạt động” ở đây chỉ là hoạt
+động điện cục bộ trong vùng thu, không phải lực khớp hay chuyển động toàn
+thân \cite{mcmanus2020analysis,boyer2023reducing}.
 
 \subsection{Mức hoạt động thay đổi ra sao}
 \label{sec:question-amplitude}
@@ -503,7 +531,8 @@ liệu hiệu chuẩn độc lập.
 
 Mỏi cơ cần được phân biệt thành giảm khả năng thực hiện (performance
 fatigability) và cảm nhận mỏi (perceived fatigability), cùng các cơ chế
-trung ương và ngoại biên \cite{enoka2008muscle}. sEMG không đo trực tiếp
+trung ương và ngoại biên
+\cite{enoka2008muscle,enoka2016translating}. sEMG không đo trực tiếp
 mỏi; nó đo các biểu hiện điện đi kèm. Trong một số thí nghiệm co đẳng
 trường duy trì, MDF/MNF giảm và biên độ có thể tăng. Dịch phổ thường liên
 quan đến giảm vận tốc lan truyền điện thế và thay đổi hình dạng MUAP, còn
@@ -511,7 +540,8 @@ tuyển mộ thêm MU có thể bù lực và làm biên độ tăng
 \cite{dimitrova2003interpretation,cifrek2009surface,mcmanus2020analysis}.
 
 Các dấu hiệu này không đủ để tự xác nhận mỏi. Dịch phổ cũng có thể xuất
-phát từ thay đổi tuyển mộ, điều kiện co, vị trí điện cực hoặc artifact; mỏi
+phát từ thay đổi tuyển mộ, điều kiện co, vị trí điện cực hoặc nhiễu giả;
+mỏi
 có thể tồn tại mà không tạo dịch phổ rõ. Kết quả định hướng dịch phổ chủ
 yếu được xác lập trong điều kiện co phù hợp và phải được diễn giải theo
 loại co, nhiệm vụ và dữ liệu tham chiếu
@@ -557,7 +587,7 @@ tần số \cite{mcmanus2020analysis,knaflitz1999time}.
 \textbf{Loại co} & \textbf{Đặc điểm cơ học} & \textbf{Hệ quả phân tích} \\
 \midrule
 Đẳng trường & Độ dài cơ và tư thế gần cố định, lực có thể giữ ở mức mục tiêu. & Thuận lợi hơn cho cửa sổ gần dừng và so sánh MNF/MDF. \\
-Đồng tâm/lệch tâm & Cơ ngắn lại hoặc dài ra trong khi sinh lực. & Hình học nguồn--điện cực thay đổi; cần kiểm soát pha và artifact chuyển động. \\
+Đồng tâm/lệch tâm & Cơ ngắn lại hoặc dài ra trong khi sinh lực. & Hình học nguồn--điện cực thay đổi; cần kiểm soát pha và nhiễu giả do chuyển động. \\
 Co động & Có chuyển động khớp hoặc phối hợp nhiều cơ. & Cần phân tích thời gian--tần số, phân đoạn theo pha và có thể cần cảm biến chuyển động. \\
 \bottomrule
 \end{tabularx}
@@ -572,7 +602,7 @@ tác, tư thế, động lực và trạng thái người tham gia. Lực mục 
 được dùng trong thí nghiệm co đẳng trường; task failure là thời điểm không
 còn duy trì được tiêu chí nhiệm vụ. RPE (rating of perceived exertion)
 phản ánh cảm nhận gắng sức và không thay thế phép đo khả năng thực hiện
-\cite{enoka2008muscle,besomi2020consensus}.
+\cite{enoka2016translating}.
 
 \subsection{Lặp lại và các biến cần báo cáo}
 \label{sec:reporting}
@@ -616,8 +646,8 @@ tầng phía trên đều cần điều kiện, thuật toán hoặc phép đo b
 \textbf{Đối tượng} & \textbf{Loại} & \textbf{Điều kiện và ghi chú} \\
 \midrule
 Hiệu điện thế vi sai trên da & Đo trực tiếp & Đại lượng vật lý của phép đo; chịu ảnh hưởng giao diện, dẫn truyền thể tích và nhiễu. \\
-ARV/MAV, RMS & Tính toán trực tiếp & Hàm xác định của tín hiệu trong cửa sổ; cần tín hiệu trung bình không và cửa sổ đủ dài. \\
-PSD, MNF, MDF & Tính toán trực tiếp & Phụ thuộc cửa sổ, băng thông, $f_s$, cấu hình điện cực và phương pháp PSD. \\
+ARV/MAV, RMS & Đại lượng dẫn xuất & Hàm xác định của tín hiệu trong cửa sổ; cần tín hiệu trung bình không và cửa sổ đủ dài. \\
+PSD, MNF, MDF & Đại lượng dẫn xuất & Phụ thuộc cửa sổ, dải phân tích, $f_s$, cấu hình điện cực và phương pháp PSD. \\
 Onset/offset & Suy luận có thuật toán & Phụ thuộc ngưỡng, cửa sổ và lọc; biểu diễn hoạt động điện của vùng thu. \\
 Tuyển mộ và tần số từng MU & Suy luận & Cần kỹ thuật phân tách tín hiệu; một kênh thường không đủ. \\
 Lực cơ, lực khớp & Suy luận & Quan hệ sEMG--lực phi tuyến và cục bộ; cần mô hình cùng dữ liệu hiệu chuẩn. \\
@@ -635,13 +665,14 @@ Hoạt động cơ lân cận & Suy luận & Có thể bị crosstalk che phủ;
 Chương này đã trình bày chuỗi từ lệnh vận động đến tín hiệu sEMG trên da:
 MU phát các điện thế hoạt động; SFAP của nhiều sợi tạo MUAP và MUAPT; dẫn
 truyền thể tích làm suy giảm và làm trơn tín hiệu; cặp điện cực đo tổng
-của nhiều nguồn cùng nhiễu. Tuyển mộ và mã hóa tần suất làm thay đổi tổng
+của nhiều nguồn cùng nhiễu. Tuyển mộ và mã hóa tần số phát xung làm thay đổi tổng
 này, tạo nền tảng vật lý cho các đặc trưng biên độ và phổ.
 
 Các hình trong chương giúp phân biệt nguồn tín hiệu, hình học đo và các
 phép biến đổi xử lý; các bảng chỉ ra điều kiện cần để diễn giải. Ba kết
-luận phương pháp luận là: sEMG đo hoạt động điện trong một vùng hữu hạn;
-ARV, RMS, MNF và MDF là các hàm tính toán phụ thuộc cấu hình; và mọi phát
+luận phương pháp luận là: sEMG đo hiệu điện thế vi sai trên da, qua đó
+phản ánh tổng hợp hoạt động điện trong một vùng hữu hạn; ARV, RMS, MNF và
+MDF là các đại lượng dẫn xuất phụ thuộc cấu hình; và mọi phát
 biểu về lực, chuyển động hoặc mỏi đều là suy luận có điều kiện. Những
 nguyên tắc này sẽ được dùng để đánh giá thông số phần cứng, firmware, dữ
 liệu và kết quả thực nghiệm của hệ thống ở các phần tiếp theo.
